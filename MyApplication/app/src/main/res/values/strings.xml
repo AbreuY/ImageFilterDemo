@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="next">Tiếp tục</string>
+    <string name="back">Quay lại</string>
+</resources>

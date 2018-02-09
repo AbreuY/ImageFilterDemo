@@ -11,7 +11,7 @@
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
-        android:text="Demo ứng dụng filter ảnh"
+        android:text="@string/intro"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
 
@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/_10sdp"
-        android:text="Dương Vũ from https://cungdev.com"
+        android:text="@string/website"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="16sp" />
 

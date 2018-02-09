@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -64,6 +65,11 @@ public class FinalImageActivity extends BaseActivity {
     @OnClick(R.id.bt_post)
     public void post() {
         //share
-        showToast("Fake share thoi :))");
+        final Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(imagePath)));
+        intent.putExtra(Intent.EXTRA_TEXT, "Hic");
+        intent.setType("image/png");
+        startActivity(Intent.createChooser(intent, "Share image via"));
     }
 }

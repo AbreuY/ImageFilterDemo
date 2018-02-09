@@ -92,15 +92,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED);
     }
 
-    public boolean isPermissionsGranted(String permissions[]) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-            return true;
-        boolean granted = true;
-        for (String permission : permissions) {
-            if (!(ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED))
-                granted = false;
-        }
-        return granted;
+
+
+
+
+    public void askCompactPermissions(String permissions[], PermissionUtils.PermissionResult permissionResult) {
+        permissionsAsk = permissions;
+        this.permissionResult = permissionResult;
+        internalRequestPermission(permissionsAsk);
     }
 
     private void internalRequestPermission(String[] permissionAsk) {
@@ -148,18 +147,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    public void askCompactPermission(String permission, PermissionUtils.PermissionResult permissionResult) {
-        permissionsAsk = new String[]{permission};
-        this.permissionResult = permissionResult;
-        internalRequestPermission(permissionsAsk);
-    }
-
-    public void askCompactPermissions(String permissions[], PermissionUtils.PermissionResult permissionResult) {
-        permissionsAsk = permissions;
-        this.permissionResult = permissionResult;
-        internalRequestPermission(permissionsAsk);
     }
 
     public void showProgressDialog(String message) {
